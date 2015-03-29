@@ -1,0 +1,98 @@
+/* general classes */
+
+.slider {
+    position: relative; /* important */
+    left: 0;
+    top: 0;
+    height: 17px;
+    width: 200px;
+    border: solid #888 1px;
+    background-repeat: no-repeat;
+}
+
+.slider.active {
+    cursor: pointer;
+}
+
+.slider.slider-vertical {
+	width: 17px;
+	height: 200px;
+}
+
+.slider-handle {
+    /* Horizontal */
+    position: absolute;
+    cursor: pointer;
+    cursor: grab;
+    z-index: 4;
+    width: 10px;
+    height: 25px;
+    top: 0; /* must be 0 */
+    left: 0; /* must be 0 */
+	margin-top: -4px; /* The difference between height of the handle and height of the back/slider divided by 2. */
+    margin-left: -5px;  /* Half the width of the handle */
+	background-color: #555;
+}
+
+.slider.locked .slider-handle {
+    cursor: not-allowed;
+}
+
+.slider-vertical .slider-handle {
+    width: 25px;
+    height: 10px;
+    margin-left: -4px; /* The difference between width of the handle and width of the back/slider divided by 2. */
+    margin-top: -5px;   /* Half the height of the handle */
+}
+
+.slider-tooltip {
+    font-size: 10px;
+	z-index: 3;
+	/*display: inline;*/
+	visibility: hidden;
+	position: absolute;
+    padding: .05em .2em;
+	top: -22px;
+    margin-left: -6px;
+	left: 0; /* will be adjusted by JS */
+    border: 1px solid #555;
+	color: #555;
+	white-space: nowrap;
+}
+
+.slider-vertical .slider-tooltip {
+    top: 0;
+    left: 160%;
+    margin-top: -12px;
+    margin-left: 0;
+}
+
+.slider-range {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	position: absolute;
+	background-color: #ccc;
+	z-index: 2;
+}
+
+.slider-server-level {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    /*height: 100%;*/
+    /*display: none;*/
+    z-index: 1;
+}
+
+.slider-server-level + .slider-range {
+    opacity: .7; /* make server level visible */
+}
+
+/*.slider-vertical .slider-server-level {*/
+    /*width: 100%;*/
+    /*height: auto;*/
+/*}*/

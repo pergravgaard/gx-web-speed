@@ -1,0 +1,134 @@
+/* basic layout */
+body, div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+	background-color: #f6f6f6;
+	overflow: auto;
+}
+
+#divHeader {
+	
+}
+
+#divFooter {
+	
+}
+
+#divBodyContainer {
+	position: relative;
+	left: 0;
+	top: 20px;
+	z-index: 1;
+	padding: 0 20px;
+	width: 924px;
+	margin: 20px auto 50px auto;
+	box-shadow: 0 1px 4px #999;
+	-moz-box-shadow: 0 1px 4px #999;
+	-webkit-box-shadow: 0 1px 4px #999;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border: 1px solid #426E87;
+	background: #fff;	
+}
+
+#divMiddlePane {
+	left: 0;
+	top: 45px; /* height of header pane */
+	position: relative;	/* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+	float: left;
+	*float: none;
+	margin-bottom: 45px; /* must equal top value (height of header pane) */
+	overflow: hidden;
+	width: 100%;	
+	/*border-top: solid 1px #6f2116;
+	border-bottom: #6f2116 solid 1px;*/
+	border: #426E87 solid 1px;
+	border-width: 1px 0;
+}
+
+#divHeaderPane {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 45px;
+}
+
+#divFooterPane {
+	clear: both;
+	width: 100%;
+	height: 50px;
+}
+
+#divMiddleOuter {
+	float: left;
+	width: 200%; /* twice the width of the body container */
+	position: relative;
+	left: 170px; /* width of left pane (including width of vertical borders) */
+}
+
+#divMiddleInner {
+	float: left;
+	width: 100%; /* twice the width of the body container (since nested inside middle outer) */
+	position: relative;
+	left: 50%;
+	margin-left: -350px; /* -1 times sum of left pane width and right pane width (including width of vertical borders) */
+	padding: 20px 0;
+}
+
+#divLeftPane {
+	min-height: 10px;
+	float: left;
+	width: 169px;
+	position: absolute;
+	top: 20px;
+	bottom: 20px;
+	margin-left: -50%;
+	left: 180px; /* width of right pane (including width of vertical borders)  */
+	overflow: hidden;
+	/*border-right: solid 1px #6f2116;*/
+	border-right: #426E87 solid 1px;
+}
+
+#divRightPane {
+	float: left;
+	width: 180px;
+	position: absolute;
+	left: 0;
+	top: 20px;
+	bottom: 20px;
+	/*border-left: solid 1px #6f2116;*/
+	border-left: #426E87 solid 1px;
+}
+
+#divContentWrapper {
+	float: right;
+	width: 50%; /* width of the body container (since nested inside middle inner) */
+	position: relative;
+	right: 100%;
+}
+
+#divContentPane {
+	min-height: 400px;
+	margin-left: 350px; /* sum of left pane width and right pane width */
+	padding: 0 30px;
+	overflow: auto; /* to prevent child elements overlapping right pane */
+}
+
+/* remove left column and make content pane occupy the extra space */
+#divLeftPane {
+	display: none;
+}
+#divContentPane {
+	margin-left: 180px; /* sum of left pane width and right pane width */
+}
+#divMiddleInner {
+	margin-left: -180px; /* -1 times sum of left pane width and right pane width (including width of vertical borders) */
+}
+#divMiddleOuter {
+	left: 0; /* width of left pane (including width of vertical borders) */
+}

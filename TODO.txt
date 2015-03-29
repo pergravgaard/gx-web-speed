@@ -1,0 +1,17 @@
+- Registration of date editors: it should be easier to configure parse patterns for specific fields: read them from messages.properties - see renderDateEditor in XTagLib.groovy - but still need a way to make the controller register propertyeditors (like @InitBinder)
+- Validation of date fields: The rejected value is lost (Solved in custom tag, but submit fix to Grails Core)
+- Date fields on command objects are not binded? Test in newer versions of Grails
+- ability to configure the merge of two or more fields in one column in list view
+- Custom HTML encoding with lookahead: don't escape ampersands in already escaped expressions like &hellip;
+
+- if fileupload (field of type byte[]) and you just wanna edit the description field (or some other field), but not the byte[] field, this is not possible unless the fileupload is disabled.
+    Should make this possible somehow (JavaScript or URL parameter). Have made a solution in JavaScript (DFileUpload.js), but it is kind of weird to use and configure. Should use URL parameter and plain HTML. Must adjust decorator tag as well.
+- Show view with byte-array editor: Clicking on the byte[] link returns 404. Clicking the copy link/action makes the JavaScript (DFileUpload.js) remove the required class. DAA!! Actually the copy link does not make sense when there is a byte-array editor
+
+- move hidden version and id fields into form tag (delete hiddenId tag again and adjust templates)
+- many-to-many field editor
+
+- crud-view.css: need CSS to simulate dropdown in table cell and in show view
+
+- /term/create?tag.id=2 is not binding: The add link from the one-to-many editor is wrong?
+- Edit Category is slow: renderOneToMany may cause Hibernate to load all objects into memory

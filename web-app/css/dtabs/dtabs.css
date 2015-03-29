@@ -1,0 +1,160 @@
+.DTab {
+	position: relative;
+	left: 0;
+	top: 0;
+	padding: 10px;
+}
+
+.DTabInActive {
+	visibility: hidden;
+	display: none; /* must be set to 'none' */
+}
+
+.DTabActive {
+	visibility: visible;
+	display: block;
+}
+
+.DTabActive * {
+	visibility: visible; /* necessary in IE 7 for nested tabs */
+}
+
+.DTabDisabled {
+}
+
+.DTabBar {
+	position: relative;
+	left: 0;
+	top: 1px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	padding-left: 10px;
+	visibility: visible;
+}
+
+.DTabBar:after { /* clearing without presentational markup, IE gets extra treatment */
+	display: block;
+    clear: both;
+    content: "";
+}
+
+.DTabItemLeft {
+}
+
+.DTabItemRight {
+}
+
+.DTabItem {
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	margin-right: 6px;
+	white-space: nowrap;
+}
+
+.DTabItem a:link, .DTabItem a:visited, .DTabItem a:hover, .DTabItem a:active {
+	display: block;
+	border: black solid 1px;
+	padding: 3px 6px;
+	color: black;
+	text-decoration: none;
+}
+
+.DTabBar .DTabItem a {
+	border-top-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-khtml-border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-khtml-border-top-right-radius: 5px;
+}
+
+.DTabBarBottom {
+	top: -1px;
+}
+
+.DTabBarBottom .DTabItem a {
+	border-top-left-radius: 0;
+	-moz-border-radius-topleft: 0;
+	-webkit-border-top-left-radius: 0;
+	-khtml-border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	-moz-border-radius-topright: 0;
+	-webkit-border-top-right-radius: 0;
+	-khtml-border-top-right-radius: 0;
+	border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-khtml-border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-khtml-border-bottom-right-radius: 5px;
+}
+
+.DTabItem a:link, .DTabItem a:visited, .DTabItem a:active, .DTabItem a:hover, .DTabItem a span.Accesskey {
+	font-family: verdana, arial, "times new roman", sans-serif;
+	font-size: 8pt;
+	line-height: normal;
+}
+
+.DTabItem a span.Accesskey {
+	text-decoration: underline;
+}
+
+.DTabItemActive a:link, .DTabItemActive a:visited, .DTabItemActive a:active, .DTabItemActive a:hover, .DTabItem a:hover {
+	border-bottom: white solid 1px;
+}
+
+.DTabBarBottom .DTabItem {
+}
+
+.DTabItemActive a:link, .DTabItemActive a:visited, .DTabItemActive a:active, .DTabItemActive a:hover {
+	cursor: default;
+}
+
+.DTabBarBottom .DTabItemActive a:link, .DTabBarBottom .DTabItemActive a:visited, .DTabBarBottom .DTabItemActive a:active, .DTabBarBottom .DTabItemActive a:hover, .DTabBarBottom .DTabItem a:hover {
+	border-top-color: white;
+	border-bottom-color: black;
+}
+
+.DTabItemDisabled a:link, .DTabItemDisabled a:visited, .DTabItemDisabled a:active, .DTabItemDisabled a:hover, .DTabBarBottom .DTabItemDisabled a:hover {
+	cursor: default;
+	text-decoration: none;
+	border-color: black;
+	color: #333;
+	background-color: #ccc;
+}
+
+/* Additional IE specific bug fixes... */
+
+* html .DTabBar { /* auto clear, @ IE 6 & IE 7 Quirks Mode */
+    display: inline-block;
+}
+
+*:first-child + html .DTabBar  { /* @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */
+    display: inline-block;
+}
+
+/* these tab bar containers do not need to be present in your HTML structure, but nesting each tab bar (UL, OL or DL element) inside a DIV element makes styling of the tabs easier */
+
+.dtab-bar-container {
+	margin-top: 5px;
+	position: relative;
+}
+
+.dtab-bar-container.js {
+	border-bottom: black solid 1px;
+}
+
+.dtab-bar-bottom-container {
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.dtab-bar-bottom-container.js {
+	border-top: black solid 1px;
+}

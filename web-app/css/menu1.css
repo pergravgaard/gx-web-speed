@@ -1,0 +1,45 @@
+/* left menu */
+
+#divMenu {
+	margin: 0 15px;
+}
+
+#divMenu dl {
+	margin: 0;
+}
+
+#divMenu dt, #divMenu dd, #divMenu a:link, #divMenu a:visited, #divMenu a:hover, #divMenu a:active {
+	font-size: 12px;
+	color: rgb(103,144,154);
+	margin: 0;
+	font-family: "Comic Sans MS";
+	font-weight: bold;
+	padding: 0;
+}
+
+#divMenu dt {
+	color: #6f2116;
+}
+/*
+#divMenu a:visited {
+	color: #666;
+}*/
+
+#divMenu a.Active {
+	color: #dc8323;
+	text-decoration: none;
+}
+/*
+#divMenu dt.Active {
+	display: list-item;
+	list-style-type: circle;
+	margin-left: 8px;
+}*/
+
+#divMenu dt {
+	margin: 0 0 5px 0;
+}
+
+#divMenu dd {
+	margin: 0 0 7px 20px;
+}

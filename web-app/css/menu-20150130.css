@@ -1,0 +1,210 @@
+#menu-toggle-label {
+    position: fixed;
+    right: .5em;
+    top: .5em;
+    cursor: pointer;
+    color: #fff;
+    font-size: 2em;
+    display: block;
+    line-height: .9;
+    padding: .01em .02em 0 .3em;
+    z-index: 19999;
+    border: solid 1px #fff;
+    border-radius: 3px;
+}
+
+#menu-toggle-label.ion-icon:before {
+    content: "\f20e";
+}
+
+nav .menu-list {
+    margin: 0;
+    float: none;
+}
+
+.menu-list dt {
+    display: none;
+}
+
+.menu-item {
+    clear: both;
+    margin: 0;
+}
+
+a.menu-item:link, a.menu-item:visited, a.menu-item:hover, a.menu-item:active, span.menu-item.no-link {
+    display: block;
+    margin: 0;
+    padding: .5em 1em;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+nav#nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: #eee;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+@media (max-width: 992px) {
+
+    #menu-toggle:checked ~ nav#nav {
+        opacity: 1;
+        right: -200px;
+        z-index: 19998;
+        transform: translate3d(-200px, 0, 0);
+    }
+
+    #menu-toggle ~ nav#nav {
+        transform: translate3d(0, 0, 0);
+        -webkit-transition: -webkit-transform .2s ease-in-out, opacity .2s ease-in-out;
+        -moz-transition: -moz-transform .2s ease-in-out, opacity .2s ease-in-out;
+        -o-transition: -o-transform .2s ease-in-out, opacity .2s ease-in-out;
+        -ms-transition: -ms-transform .2s ease-in-out, opacity .2s ease-in-out;
+        transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+        opacity: 0;
+        right: 0;
+        width: 199px;
+        border-left: solid 1px #fdd200;
+    }
+
+    #menu-toggle:checked ~ #main,
+    #menu-toggle:checked ~ #header,
+    #menu-toggle:checked ~ #footer,
+    #menu-toggle:checked ~ .server-messages,
+    #menu-toggle:checked ~ .messages,
+    #menu-toggle:checked ~ #menu-toggle-label {
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -webkit-transform: translate3d(-200px, 0, 0);
+        -moz-transform: translate3d(-200px, 0, 0);
+        -ms-transform: translate3d(-200px, 0, 0);
+        -o-transform: translate3d(-200px, 0, 0);
+        transform: translate3d(-200px, 0, 0);
+    }
+
+    #menu-toggle ~ #main,
+    #menu-toggle ~ #header,
+    #menu-toggle ~ #footer,
+    #menu-toggle ~ #menu-toggle-label {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transition: -webkit-transform 0.2s ease-in-out;
+        -moz-transition: -moz-transform 0.2s ease-in-out;
+        -o-transition: -o-transform 0.2s ease-in-out;
+        -ms-transition: -ms-transform 0.2s ease-in-out;
+        transition: transform 0.2s ease-in-out;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    #menu-toggle-label {
+        right: auto;
+        left: 50%;
+        margin-left: 430px;
+    }
+
+    #menu-toggle ~ nav#nav {
+        position: fixed;
+        right: auto;
+        top: 4.2em;
+        left: 50%;
+        bottom: auto;
+        width: 970px;
+        margin-left: -485px;
+        opacity: 0;
+        -webkit-transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
+        -moz-transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
+        -o-transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
+        -ms-transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
+        transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
+    }
+
+    #menu-toggle:checked ~ nav#nav {
+        opacity: 1;
+        z-index: 20000;
+    }
+
+    .menu-item {
+        float: left;
+        clear: none;
+    }
+
+}
+
+/*@media print and (min-width: 748px) {*/
+    /*nav#nav {*/
+        /*position: absolute;*/
+        /*top: 0;*/
+        /*right: 13px;*/
+        /*padding: 0;*/
+        /*max-width: 900px;*/
+        /*left: 50%;*/
+        /*z-index: 8999;*/
+        /*margin: 42px 0 0 -450px;*/
+    /*}*/
+
+    /*.menu-list {*/
+        /*clear: both;*/
+        /*padding: 5px 0;*/
+        /*margin: 0;*/
+        /*float: right;*/
+        /*font-family: sans-serif;*/
+        /*font-size: 1.8em;*/
+        /*font-weight: normal;*/
+        /*text-transform: uppercase;*/
+    /*}*/
+
+    /*.menu-list dt {*/
+        /*display: none;*/
+    /*}*/
+
+    /*.menu-item {*/
+        /*list-style-type: none;*/
+        /*float: left;*/
+        /*color: #000;*/
+        /*border-right: solid 1px transparent; *//**//* the border is necessary for IE8 - otherwise the items overlap each other */
+        /*margin: 0;*/
+    /*}*/
+
+    /*a.menu-item:link, a.menu-item:visited, a.menu-item:hover, a.menu-item:active, span.menu-item.no-link {*/
+        /*text-decoration: none;*/
+        /*display: inline-block;*/
+        /*color: #666;*/
+        /*margin: 0 0 0 20px;*/
+        /*border: solid 1px transparent;*/
+        /*border-width: 1px 0;*/
+        /*padding: 1px 0 0 0;*/
+        /*text-shadow: 1px 1px 1px #555;*/
+        /*outline: none;*/
+    /*}*/
+
+    /*a.menu-item.active:link, a.menu-item.active:visited, a.menu-item.active:hover, a.menu-item.active:active {*/
+        /*color: #cd1c69;*/
+        /*border-color: #cd1c69;*/
+        /*text-decoration: underline overline;*/
+        /*border: solid 1px #cd1c69;*/
+        /*border-width: 1px 0;*/
+        /*color: #D16F4E;*/
+    /*}*/
+
+    /*.menu-item.last a {*/
+        /*margin-right: 0;*/
+    /*}*/
+
+    /*#menu-toggle-label {*/
+        /*display: none;*/
+        /*text-shadow: 1px 1px rgba(0, 0, 0, 0.1);*/
+    /*}*/
+
+/*}*/

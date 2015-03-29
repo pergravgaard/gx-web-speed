@@ -1,0 +1,119 @@
+/* basic layout */
+body, div {
+    margin: 0;
+    padding: 0;
+}
+
+body1 {
+    /*background: url(../images/nano/bg-top-container.png) repeat-x;*/
+	background-image: radial-gradient(ellipse farthest-corner at center top , #3A3C45 0%, #000000 100%);
+	background-image: -webkit-radial-gradient(ellipse farthest-corner at center top , #3A3C45 0%, #000000 100%);
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+#divBodyContainer {
+	position: relative;
+	left: 0;
+	top: 0;
+    margin: 0 auto;
+	padding-top: 68px;
+}
+
+#divMiddlePane {
+	position: relative;
+	height: 100%;
+	margin-top: 17px;
+}
+
+#divHeaderPane {
+	position: absolute;
+	z-index: 100;
+	background-color: #fff;
+	/*background-color: #6a8b91;*/
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	/*background: #151515 url(../images/nano/footer-glow.png) no-repeat top center;*/
+	color: #fff;
+	left: 0;
+	top: 0;
+	/*min-width: 980px;*/
+	width: 100%;
+    height: 85px;
+}
+
+@media screen and (min-height: 500px) {
+    #divHeaderPane {
+        position: fixed;
+    }
+}
+
+#divToolbarPane {
+	width: 980px;
+	margin: 0 auto;
+	position: relative;
+	height: 28px;
+}
+
+#header {
+	width: 980px;
+	margin: 0 auto;
+	overflow: hidden;
+	/*padding: 20px 0;*/
+}
+
+/*#divFooterPane2 {*/
+	/*background: #000 url(../images/karma/blue-grey/bg-footer.jpg) repeat-x;*/
+	/*clear: both;*/
+	/*width: 100%;*/
+	/*height: 89px;*/
+/*}*/
+
+#divFooterPane {
+	/*background: #000 url(../images/karma/blue-grey/bg-footer.jpg) repeat-x;*/
+	/*backg1round-color: #84AEB5;*/
+
+	/*border-top: solid #19292e 1px;*/
+	clear: both;
+	width: 100%;
+	/*height: 410px;*/
+	/*position: relative;*/
+}
+
+#footer {
+	/*position: absolute;*/
+	border-top: solid #d5d5d5 10px;
+	/*background: #84AEB5 url(../images/nano/footer-glow.png) no-repeat top center;*/
+	background: #e5e5e5 url(../images/nano/footer-glow.png) no-repeat top center;
+	width: 100%;
+	height: 89px;
+	/*bottom: 0;*/
+}
+
+#divLeftPane {
+	/*display: none;*/
+}
+
+#divRightPane {
+	/*display: none;*/
+}
+
+#divContentPane {
+	width: 980px;
+	margin: 0 auto;
+	height: 200%;
+	padding: 50px 0;
+}
+
+.powered-by {
+	font-size: .8em;
+	color: #fff;
+	position: absolute;
+	padding: 5px;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	margin: auto;
+}
+
+.powered-by-link:link, .powered-by-link:visited, .powered-by-link:hover, .powered-by-link:active {
+	color: #fff;
+}

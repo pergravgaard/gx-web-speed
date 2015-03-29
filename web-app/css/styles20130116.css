@@ -1,0 +1,489 @@
+/*<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">*/
+/* tag definitions */
+html {
+	font-size: 1em; /* IE must be in strict mode! */
+	overflow-y: auto; /* override overflow-y from normalize.css */
+}
+
+/*  input, select, textarea and button tags does not inherit from the html tag and their default font-size is not 16 px (12pt), but 13.3333px (10pt)	*/
+/*  The table tag must be present as it appears to be used as a parent/base for inheritance in IE6.	*/
+body, input, select, textarea, button, table {
+	/*'Bitstream Vera Sans', 'Open Sans', verdana, sans-serif, "dejavu sans", ubuntu, sans-serif;*/
+	font-family: 'ColaborateLightRegular', sans-serif;
+	font-size: 1em;
+	color: #555;
+}
+
+body, div, form, fieldset, legend, label, input, button, select, textarea, option, optgroup {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 1em;
+	font-weight: bold;
+	margin: 0 0 .3em 0;
+}
+
+p + h1, dl + h2, ul + h2, ol + h2, p + h2, pre + h2, dl + h3, ul + h3, ol + h3, p + h3, pre + h3 {
+	margin-top: 1em;
+}
+
+h1 {
+	font-size: 2em;
+	margin: .8em 0;
+}
+
+@media screen {
+	.content p, .content li, .content dl {
+	    line-height: 1.65em;
+	}
+	.content p {
+		margin: 5px 0;
+		letter-spacing: .2px;
+	}
+
+	.content .note {
+		color: #DC8323;
+		font-size: .785714em;
+	}
+	.content p.error {
+		color: red;
+		white-space: nowrap;
+	}
+	a.external {
+		padding-right: 13px;
+		background: url(../images/external.png) 100% 2px no-repeat;
+	}
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
+ul, ol {
+	margin: 5px 0 8px 0;
+	padding-left: 20px;
+}
+
+li ul, li ol {
+	padding-left: .5em;
+}
+
+table {
+	margin-bottom: 1em;
+	border-collapse: collapse;
+}
+
+caption {
+	white-space: nowrap;
+	padding: 3px 0;
+	font-weight: bold;
+	font-size: 1.1em;
+	font-family: "Comic Sans MS";
+}
+
+th, td {
+	padding: 4px;
+/*	border: #999 solid 1px;*/
+}
+
+/* if you only specify 'a' and not the pseudo classes (link, visited, active) it goes for anchors as well as links. */
+a:link, a:visited, a:hover, a:active {
+    color: #000;
+    text-decoration: underline;
+	outline: none;
+}
+
+a:visited {
+    color: rgb(123,122,122);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+	color: #DC8323;
+}
+
+cite {
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    padding-left: 8px;
+    border-left: black solid 1px;
+    display: block;
+    font: italic .9em verdana;
+}
+p code {
+	background: none repeat scroll 0 0 #FFF;
+	border: 1px solid #DDD;
+	border-radius: 0.4em;
+	color: #555;
+	display: inline-block;
+	font-size: 0.8em;
+	line-height: 1.5em;
+	margin: -1px 0;
+	padding: 0 0.3em;
+}
+pre.code {
+	font-family: "Courier New";
+	line-height: 1.4em;
+	font-size: 1.1em;
+	margin: 5px 0;
+	padding: 15px;
+	background-color: #E1F0FF;
+	overflow: auto;
+	border-style: dotted solid;
+	border-width: 1px 2px;
+	border-color: #AABBCE;
+	white-space: pre;
+}
+code {
+	font-size: 1.1em;
+	font-family: "Courier New";
+	color: #555;
+}
+sup {
+	position: relative;
+	display: none;
+	display: inline-block;
+	margin: -4px 0 0 3px;
+	color: #dc8323;
+}
+
+/* header */
+#hSiteHeadline {
+	display: inline-block;
+	font-size: 2.2em;
+	padding: 45px 0 0 0;
+	margin: 0;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 2px 2px 2px #111c20;
+}
+
+/* footer */
+.copyright, .copyright a:link, .copyright a:visited, .copyright a:active, .copyright a:hover {
+    font-size: .75em;
+}
+
+.copyright {
+    color: rgb(103,144,154);
+    font-family: verdana;
+    margin: 0 auto;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.messages, #divAjaxProgress, .server-messages {
+	display: none;
+	white-space: nowrap;
+	padding: 10px 20px;
+	margin: 21px 12px;
+	max-height: 200px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	overflow: auto;
+	background-color: #eff;
+	box-shadow:0 1px 4px #999;
+	-moz-box-shadow:0 1px 4px #999;
+	-webkit-box-shadow:0 1px 4px #999;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #418dd4;
+	opacity: .85;
+	filter: alpha(opacity=85);
+	z-index: 10005;
+}
+
+.has-messages, #divAjaxProgress.ajax-progress {
+	display: block;
+}
+
+.processing, #divAjaxProgress.ajax-progress {
+	padding: 5px 8px 5px 28px;
+	background-color: #fff;
+	background-image: url("../images/waiting.gif");
+	left: 0;
+	right: auto;
+	background-position: 5px 5px;
+	background-repeat: no-repeat;
+	min-height: 16px;
+}
+
+.has-messages dl {
+	margin: 10px 0;
+	padding: 0;
+	max-width: 300px;
+}
+
+.has-messages dt {
+	font-weight: bold;
+	margin: 0;
+	padding: 0 5px 5px 5px;
+}
+
+.has-messages dt, .has-messages dd, .has-messages dd a, .has-messages dd span {
+	font-family: verdana;
+	font-size: 8pt;
+}
+
+.has-messages dd {
+	display: list-item;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: disc;
+	margin: 0 10px 2px 20px;
+	padding: 0;
+	white-space: normal;
+}
+
+.error-messages dd {
+	color: red;
+}
+
+ul.error {
+	margin: 0;
+}
+
+ul.error li {
+	padding: 2px;
+}
+
+a.error-message {
+	text-decoration: underline;
+	color: red;
+}
+
+.error-message {
+	color: red;
+}
+
+.message {
+	margin-top: 2px;
+	font-size: .9em;
+}
+
+.warning .message {
+	color: #FF8F35;
+}
+
+.info .message {
+	color: #A1B2C2;
+}
+
+p {
+	margin: 0;
+}
+
+ul.tree, ul.tree ul {
+	margin: 0;
+	padding: 0;
+}
+ul.tree li {
+	list-style-type: disc;
+	margin: 0 10px 0 15px;
+	padding: 0;
+}
+
+ul.nav {
+	margin: 0 0 10px 0;
+	padding: 0;
+	background-color: #19292e;
+	text-align: center;
+	border-radius: 5px;
+	/*width: 40em;*/ /* necessary in IE8, obsolete for standard browsers */
+}
+.nav li {
+	display: inline-block;
+	list-style-type: none;
+}
+.nav a:link, .nav a:visited, .nav a:hover, .nav a:active {
+	color: #fff;
+	display: block;
+	padding: 10px 15px;
+	margin-right: 10px;
+	text-decoration: underline;
+}
+.nav a:hover {
+	text-decoration: none;
+}
+
+/* pagination */
+div.paginate {
+	margin: 10px 0;
+}
+
+div.paginate a:link, div.paginate a:visited, div.paginate a:hover, div.paginate a:active {
+	color: #000;
+	margin-right: 6px;
+	text-decoration: underline;
+}
+div.paginate span.step {
+	margin-right: 6px;
+}
+div.paginate a:hover {
+	text-decoration: none;
+}
+div.paginate span.currentStep {
+	margin-right: 6px;
+	padding: 0 2px 0 3px;
+	border: solid 1px black;
+}
+/* domain list */
+div.list {
+	overflow: auto;
+	height: 100%; /* necessary for IE9 due to bug with overflow auto */
+	box-shadow: 0 1px 4px #999;
+	-moz-box-shadow: 0 1px 4px #999;
+	-webkit-box-shadow: 0 1px 4px #999;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border: 1px solid #aaa;
+}
+.data-table {
+	/*font-size: .8462em;*/
+	margin: 0;
+	width: 100%;
+}
+.data-table tr.odd {
+	background-color: #fee;
+}
+.data-table th {
+	font-weight: normal;
+	white-space: nowrap;
+	padding: 0;
+	padding: 3px 6px;
+	border-bottom: 3px #999 double;
+}
+.data-table td {
+	white-space: nowrap;
+	padding: 4px 6px;
+	vertical-align: top;
+}
+.cell-content {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 160px;
+}
+.data-table th a:link, .data-table th a:visited, .data-table th a:hover, .data-table th a:active {
+	color: #333;
+	text-align: center;
+	text-decoration: none;
+}
+.data-table select {
+	width: 100px;
+}
+.data-table td.date {
+	text-align: center;
+}
+.data-table td.number {
+	text-align: right;
+}
+th.sortable a {
+	padding: 1px 18px 2px 0;
+	background: url(../images/sort-icons.png) no-repeat right top;
+}
+th.sorted.asc a {
+	background-position: right bottom;
+}
+th.sorted.desc a {
+	background-position: right center;
+}
+/*th.sortable a:after {
+	content: " (»)";
+}
+th.sorted.asc a:after {
+	content: " (asc)";
+}
+th.sorted.desc a:after {
+	content: " (desc)";
+}*/
+/*.field-values {
+	width: 100%;
+}*/
+.field-block {
+	border-bottom: dotted #000 1px;
+	margin: 0 0 15px 0;
+}
+.property-label {
+	display: inline-block;
+	color: #333;
+	width: 25%;
+	white-space: nowrap;
+	vertical-align: top;
+}
+div.property-value {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	max-height: 1.3em;
+	width: 75%;
+	text-align: right;
+	float: right;
+}
+ul.one-to-many, ul.many-to-many {
+	margin: 0;
+	padding: 3px 0 3px 15px;
+}
+
+.hoverable {
+	display: none;
+	border: #ccc solid 1px;
+}
+.hover-action-link:link, .hover-action-link:visited, .hover-action-link:hover, .hover-action-link:active {
+	font-size: 10px;
+	padding: 1px 8px 1px 8px;
+	color: #666;
+	margin: 0;
+	float: left;
+	display: inline-block;
+	text-decoration: none;
+}
+/*a.hover-action-link.first {
+	padding-left: 8px;
+}*/
+a.hover-action-link:hover {
+	color: #fff;
+	background-color: #BA313B;
+}
+
+.tree-button {
+	cursor: pointer;
+	font-size: .8462em; /* 11px */
+	font-family: verdana;
+	overflow: visible;
+	background: none;
+	border: solid 1px #ccc;
+	margin: 1px 6px 6px 0;
+	padding: 2px 9px;
+	background: url("../images/sprite-icons.png") no-repeat scroll -174px -96px transparent;
+}
+.tree-button.collapse {
+	background-position: -61px -128px;
+}
+.tree-button.expand {
+	background-position: -29px -128px;
+}
+.tree-button:hover {
+	background-color: #eee;
+}
+.tree-actions {
+	margin-top: 15px;
+}
+.tree-actions .label {
+	float: none;
+	font-size: 11px;
+}
+.tree-actions .text {
+	width: 100px;
+}

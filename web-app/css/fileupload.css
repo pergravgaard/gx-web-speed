@@ -1,0 +1,33 @@
+.File {
+	opacity: 0;
+	filter: alpha(opacity=0);
+	margin-left: -138px; /* IE8 and standard browsers */
+	*margin-left: -137px; /* IE6+7 */
+	cursor: pointer;
+}
+
+body:last-child .File {
+	margin-left: -147px; /* standard browsers */
+}
+
+.FileWrapper {
+	background: url(../images/choose-file.gif) no-repeat left center;
+	overflow: hidden;
+	width: 250px;
+	height: 23px;
+	cursor: pointer;
+	display: block;
+	position: relative;
+}
+
+/*.Filetext:before {
+	content: "Per";
+}*/
+
+/*.Filetext {
+	margin-left: -70px;
+}*/
+
+.Filename {
+	padding-left: 8px;
+}

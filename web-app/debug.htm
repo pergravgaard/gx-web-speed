@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="IE=Edge" />
+<meta name="author" content="Per Gravgaard" />
+<title>DBugger.js @ GrailsHouse</title>
+<style type="text/css">
+/*<![CDATA[*/
+/*]]>*/
+</style>
+<script type="text/javascript" src="js/DBugger.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+/*]]>*/
+</script>
+</head>
+<body>
+<h1>DBugger.js</h1>
+<h2>What is it?</h2>
+<p>It's just a litte bit of JavaScript to help you debug and monitor your JavaScript code across different browsers.</p>
+<p>You probably know of different tools for this purpose for different browsers, but wouldn't it be nice to use the same tool for every browser?</p>
+<p>It's not a profiler, nor a debugger where you can step through your code. But it provides a little console, that you can position anywhere on your page with CSS, and let your code write to.</p>
+<p>Furthermore you can inspect any object with the <code>inspect</code> or <code>debug</code> command, which is very useful when getting acquinted with new JavaScript frameworks or webservices returning a JSON structure.</p>
+<h2>How to use it</h2>
+<p>You should include this JavaScript file as the first file in your page as the code will assign an error listener to the <code>window</code> object.</p>
+<p>Like this:</p>
+<pre class="code">
+&lt;script type="text/javascript" src="/path/to/DBugger.js"&gt;&lt;/script&gt;
+</pre>
+<p>Any possible JavaScript error will then get caught.</p>
+<p>Besides assigning an error listener a convenient <code>log</code> method is added to the <code>window</code> object. The error listener calls this <code>log</code> method. If the browser does not support <code>window.console.log</code> the error is just alerted.</p>
+
+<p>To create the console you either add this script block to your BODY element:</p>
+<pre class="code">
+&lt;script type="text/javascript"&gt;
+dBugger.writeMonitor('width:300px;left:10px;bottom:10px;height:300px;');
+&lt;/script&gt;
+</pre>
+<p>Notice the style string passed to the <code>writeMonitor</code> method. The CSS in here overrides the default CSS (<code>dBugger.styleString</code>) used by the monitor/console.</p>
+<p>Another way to add/create the console is to call the <code>out</code> method when the DOM is ready.</p>
+<p>Like this:</p>
+<pre class="code">
+&lt;script type="text/javascript"&gt;
+out(''); // any argument will do
+&lt;/script&gt;
+</pre>
+<p>Try it by clicking this button:</p>
+<p><button type="button" onclick="out('Console created')">Create console</button></p>
+<p>Be aware that the <code>out</code> method should not be called until the DOM is ready!</p>
+<p>Double click inside the console to reset/clear it.</p>
+<p>Then there is the <code>debug</code> method. Use it like this:</p>
+<pre class="code">
+&lt;script type="text/javascript"&gt;
+debug({ title: 'grandfather', son: { title: 'father', son: { title: 'son', son: null } }, d: new Date(), n: 1 });
+&lt;/script&gt;
+</pre>
+<p>Try it by clicking this button:</p>
+<p><button type="button" onclick="debug({ title: 'grandfather', son: { title: 'father', son: { title: 'son', son: null } }, d: new Date(), n: 1 });">Debug</button></p>
+<p>If you have a POPUP blocker installed, please bypass it. You don't have to manually close all popups that may be opened by debugging an object and it's children. Just go back to the mother window and press F5.</p>
+<p>The <code>inspect</code> method is very similar to the <code>debug</code> method. In fact it is the fallback for the <code>debug</code> method if a POPUP blocker is detected.</p>
+<p>The <code>inspect</code> method just writes to the console instead of the popup windows document.</p>
+<p>That's it. Download <a href="js/DBugger.js">it</a> and have fun!</p>
+<script type="text/javascript">
+/*<![CDATA[*/
+//dBugger.writeMonitor('width:300px;left:10px;bottom:10px;height:300px;');
+(function() {
+    return;
+    out('line1');
+    out('<p style="color:red">line2</p>', false, true);
+    out(':'+[].constructor.getName()+':');
+    var son = { title: 'son', son: null };
+    var father = { title: 'father', son: son };
+    window.obj = { title: 'grandfather', son: father, d: new Date(), n: 1 };
+})();
+/*]]>*/
+</script>
+</body>
+</html>

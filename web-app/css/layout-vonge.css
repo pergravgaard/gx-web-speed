@@ -1,0 +1,88 @@
+/* basic layout */
+body, div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+	background: #DFEFF9 url(../images/header_bg.png) repeat-x;
+	/*background-image: linear-gradient(top center, #446EB5, #ffffff);
+	background-image: -moz-linear-gradient(0% 20% 90deg,#DFEFF9, #446EB5);
+	background-image: -webkit-linear-gradient(top center, #446EB5, #ffffff);*/
+}
+
+#divBodyContainer {
+	background: #fff;
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 964px;
+	margin: 30px auto;
+}
+
+#divMiddlePane {
+	left: 0;
+	top: 60px; /* height of header pane */
+	position: relative;	/* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+	float: left;
+	*float: none;
+	margin-bottom: 60px; /* must equal top value (height of header pane) */
+	overflow: hidden;
+	width: 964px;
+}
+
+#divHeaderPane {
+	position: absolute;
+	left: 20px;
+	top: 0;
+	width: 924px;
+	height: 59px;
+	border-bottom: solid 1px #446eb5;
+}
+
+#divFooterPane {
+	clear: both;
+	width: 924px;
+	margin: 0 20px;
+	height: 44px;
+	border-top: solid 1px #446eb5;
+}
+
+#divMiddleOuter {
+	float: left;
+	width: 200%; /* twice the width of the body container */
+	position: relative;
+	left: 0; /* width of left pane */
+}
+
+#divMiddleInner {
+	float: left;
+	width: 100%; /* twice the width of the body container (since nested inside middle outer) */
+	position: relative;
+	left: 50%;
+	margin-left: -180px; /* -1 times the sum of left pane width and right pane width */
+	padding: 20px 0;
+}
+
+#divRightPane {
+	float: left;
+	width: 180px;
+	position: relative;
+	left: 0;
+	margin-left: -1px;
+	border-left: #446eb5 solid 1px;
+}
+
+#divContentWrapper {
+	float: right;
+	width: 50%; /* width of the body container (since nested inside middle inner) */
+	position: relative;
+	right: 100%;
+	border-right: #446eb5 solid 1px;
+}
+
+#divContentPane {
+	margin-left: 181px; /* right pane width minus left margin of right pane */
+	padding: 0 30px;
+	overflow: hidden; /* to prevent child elements overlapping right pane */
+}

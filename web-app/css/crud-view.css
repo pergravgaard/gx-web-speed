@@ -1,0 +1,370 @@
+.scaffold-create,
+.scaffold-show,
+.scaffold-edit {
+	max-width: 32em;
+	margin: auto;
+}
+
+table {
+	margin-bottom: 1em;
+	border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption {
+	white-space: nowrap;
+	padding: .3em 0;
+	font-weight: bold;
+	font-size: 1.1em;
+	/*font-family: "Comic Sans MS";*/
+}
+
+th, td {
+    vertical-align: top;
+    color: #000;
+}
+
+.data-table th {
+    background-color: rgb(195, 47, 57);
+    color: #fff;
+}
+
+td a:link, td a:visited, td a:hover, td a:active {
+    color: #CD1C69;
+}
+
+ul.nav {
+    margin: 0 0 1em 0;
+    padding: .5em;
+    border: solid 1px #fdd200;
+    border-width: 1px 0;
+    text-align: center;
+}
+
+ul.nav1 {
+	margin: 0 0 1em 0;
+	padding: 1em;
+    border: solid 1px rgb(200, 200, 200);
+	/*background: #575C60 url(../images/karma/black/bg-tools.jpg) 0 0 repeat-y;*/
+	/*background-color: #84AEB5;*/
+    /*background-color: rgba(0,0,0,.4);*/
+    /*background-color: #ccc;*/
+    /*opacity: .8;*/
+	text-align: center;
+	border-radius: 1em;
+    /*-webkit-box-shadow: 0 0 rgba(255,0,0,.7), .1em .1em .5em black inset;*/
+    /*-moz-box-shadow: 0 0 rgba(255,0,0,.7), .1em .1em .5em black inset;*/
+    /*box-shadow: 0 0 rgba(255,0,0,.7), .1em .1em .5em black inset;*/
+
+    /*background: -moz-radial-gradient(#eee, #111);*/
+    /*background: -ms-radial-gradient(#eee, #111);*/
+    /*background: -o-radial-gradient(#eee, #111);*/
+    /*background: -webkit-radial-gradient(#eee, #111);*/
+    /*background: radial-gradient(#eee, #111);*/
+	/*background: -moz-linear-gradient(center top , rgba(0, 0, 0, 0.2) 0px, transparent 5%, transparent 97%, rgba(0, 0, 0, 0.45) 100%) repeat scroll 0 0%, -moz-linear-gradient(left center , rgba(0, 0, 0, 0.2) 0px, transparent 0.2%, transparent 99.8%, rgba(0, 0, 0, 0.2) 100%) repeat scroll 0 0%, -moz-linear-gradient(center bottom , #666666 0px, #5E5E5E 50%, #707070 51%, #808080 100%) repeat scroll 0 0 transparent*/
+	/*width: 40em;*/ /* necessary in IE8, obsolete for standard browsers */
+}
+
+.nav li {
+	display: inline-block;
+	list-style-type: none;
+    margin: .4em .5em;
+}
+
+.nav a:link, .nav a:visited, .nav a:hover, .nav a:active {
+	color: #777;
+	display: block;
+    padding: .4em 1em .25em 1em;
+    border: #777 solid 1px;
+    border-radius: 3px;
+	/*margin-right: 1em;*/
+	text-decoration: none;
+    /*text-shadow: .05em .05em .1em rgba(152, 152, 152, .4);*/
+}
+
+.nav a:hover {
+	text-decoration: none;
+}
+
+/* pagination */
+div.paginate-bar {
+    margin-left: 3px;
+}
+
+div.paginate {
+	margin: .5em 0;
+	min-height: 1em;
+	display: block;
+	text-align: right;
+}
+
+.paginate-message {
+	float: left;
+    font-size: .9em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div.paginate a:link, div.paginate a:visited, div.paginate a:hover, div.paginate a:active, div.paginate span.currentStep {
+	color: #777;
+	margin-right: .8em;
+	text-decoration: underline;
+}
+
+div.paginate span.step {
+	margin-right: .6em;
+}
+
+div.paginate a:hover {
+	text-decoration: none;
+}
+
+div.paginate span.currentStep {
+	padding: .2em .4em 0 .3em;
+	border: solid 1px rgb(200, 200, 200);
+    text-decoration: none;
+}
+
+/* datatable */
+div.list {
+	/*padding: 3px;*/
+	overflow: auto;
+	height: 100%; /* necessary for IE9 due to bug with overflow auto */
+	/*box-shadow: 0 1px 4px #999;*/
+	/*-moz-box-shadow: 0 1px 4px #999;*/
+	/*-webkit-box-shadow: 0 1px 4px #999;*/
+	border-radius: .3em;
+	-moz-border-radius: .3em;
+	-webkit-border-radius: .3em;
+	/*border: 1px solid rgb(203, 203, 203);*/
+    border: 1px solid rgb(119, 119, 119);
+	margin: 0;
+}
+
+.data-table {
+	margin: 0;
+	width: 100%;
+}
+
+/*.data-table tbody tr {*/
+    /*border-bottom: solid #cbcbcb 1px;*/
+/*}*/
+
+/*.data-table tbody tr:last-child {*/
+    /*border-width: 0;*/
+/*}*/
+/*.data-table tr.odd {*/
+	/*background-color: #efefef;*/
+/*}*/
+
+.data-table tr.month td {
+    /*border-bottom: #777 solid 1px;*/
+    /*color: rgb(200, 200, 200);*/
+    /*color: #fff;*/
+    background-color: #cbcbcb;
+	padding-left: 1.5em;
+    padding-top: .8em;
+    padding-bottom: .8em;
+    text-transform: uppercase;
+    /*text-align: center;*/
+    font-size: .875em;
+    /*font-weight: bold;*/
+}
+
+.data-table tr.month + tr td {
+    padding-top: .8em;
+}
+.data-table th, .data-table tfoot td {
+	font-weight: normal;
+	white-space: nowrap;
+	text-align: left;
+    padding: .6em;
+	/*border-bottom: 3px #cbcbcb double;*/
+    border-bottom: solid 1px #777;
+}
+.data-table tfoot td {
+	border-top: 1px #777 solid;
+}
+.data-table td.total {
+    background-color: #eee;
+}
+.data-table tfoot td.total:first-child {
+	text-align: left;
+}
+.data-table td {
+	white-space: nowrap;
+    padding: .5em .6em;
+    border: 1px solid rgb(203, 203, 203);
+    border-width: 1px 0;
+}
+
+.data-table tr:first-child td {
+
+}
+
+.data-table tr:last-child td {
+    /*padding-bottom: .8em;*/
+    border-bottom-width: 0;
+}
+
+.data-table th a:link, .data-table th a:visited, .data-table th a:hover, .data-table th a:active {
+    color: #fff;
+    font-size: .9em;
+	text-align: center;
+	text-decoration: none;
+}
+.data-table select {
+	width: 10em;
+}
+.data-table th.date,
+.data-table td.date,
+.data-table td.date .cell.content {
+    text-align: center;
+}
+.data-table th.number,
+.data-table td.number,
+.data-table td.number .cell-content {
+	text-align: right;
+}
+
+th.sortable a {
+	padding: .1em 1.2em .2em 0;
+	background: url(../images/sort-icons.png) no-repeat right .2em;
+}
+th.sorted.asc a {
+	background-position: right -1em;
+}
+th.sorted.desc a {
+	background-position: right -2.2em;
+}
+/*th.sortable a:after {
+	content: " (»)";
+}
+th.sorted.asc a:after {
+	content: " (asc)";
+}
+th.sorted.desc a:after {
+	content: " (desc)";
+}*/
+/*.field-values {
+	width: 100%;
+}*/
+.field-block {
+	border-bottom: dotted #777 1px;
+	margin: 0 0 1em 0;
+    position: relative;
+}
+.field-block:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.property-label {
+	/*color: #333;*/
+	white-space: nowrap;
+	vertical-align: top;
+    float: left;
+    max-width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.property-value {
+	margin-left: .5em;
+    color: #000;
+	float: right;
+	outline: none;
+    clear: none;
+}
+.property-value[contenteditable="true"] {
+	min-height: 1.5em;
+	min-width: 2em;
+}
+.property-value[contenteditable="true"].editable {
+	background-color: #fff;
+	padding: 3px 3px 0;
+	width: auto;
+	position: relative;
+	top: -5px;
+	outline: none;
+	border: black solid 1px;
+	border-radius: 3px;
+}
+.property-value[contenteditable="true"].editable.error {
+	border-color: #ff0000;
+}
+/*ul.one-to-many, ul.many-to-many {
+	margin: 0;
+	padding: 3px 0 3px 15px;
+}*/
+
+.scaffold-collection {
+    display: inline-block;
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*top: -5px;*/
+    /*z-index: 100;*/
+	margin: 0;
+	/*padding: 3px 0;*/
+    /*overflow: hidden;*/
+    /*max-height: 1.5em;*/
+}
+
+td div.cell-content {
+	/*background-color: red;*/
+	position: relative;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+	min-height: 1ex;
+    font-size: .875em;
+    color: #000;
+}
+
+td div.cell-content .scaffold-collection {
+	/*position: relative;*/
+	/*position: absolute;*/
+	/*display: none;*/
+	padding: 0;
+	margin: 0;
+	/*max-height: 1em;*/
+}
+
+/*.cell-content:hover {*/
+	/*overflow: visible;*/
+    /*background-color: #f6f6f6;*/
+/*}*/
+
+td div.cell-content:hover .scaffold-collection {
+    /*max-height: none;*/
+	/*z-index: 10;*/
+    /*opacity: .9;*/
+}
+.scaffold-collection-term {
+	font-weight: normal;
+	margin: 0;
+}
+.scaffold-collection-item {
+    /*list-style-type: none;*/
+    /*float: left;*/
+    margin: 5px 0;
+    /*display: none;*/
+}
+
+td div.cell-content .scaffold-collection-item {
+	display: none;
+}
+
+#divEditableHover {
+	background-color: #000;
+	opacity: .8;
+	border-radius: 2px;
+	color: #fff;
+	padding: 4px 6px;
+	margin: 3px 0 0 0;
+}

@@ -1,0 +1,78 @@
+/* tag definitions */
+html {
+    font-size: 1em; /* IE must be in strict mode! */
+}
+
+/*  input and button tags does not inherit from the html tag and their default font-size is not 16 px (12pt), but 13.3333px (10pt)	*/
+/*  The table tag must be present as it appears to be used as a parent/base for inheritance in IE6.	*/
+body, input, select, textarea, button, table {
+    font-family: "times new roman", serif;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "times new roman", serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+pre {
+	white-space: pre-wrap;
+	*white-space: normal;
+}
+
+th {
+	white-space: normal;
+}
+
+#divLeftPane, #divRightPane, #divFooterPane, #divHeaderPane, .not-printable, *[role="navigation"], .action-block {
+	display: none;
+}
+div.list {
+	overflow: visible;
+}
+a.external {
+	background-image: none;
+	padding-right: 0;
+}
+
+a:link, a:visited, a:hover, a:active {
+	color: #000;
+	text-decoration: underline;
+}
+code, pre.code {
+	font-size: 1em;
+}
+a:after {
+	content: " (" attr(href) ")";
+}
+
+div.list {
+	border-style: none;
+	box-shadow: none;
+}
+
+.data-table tr.odd {
+	background-color: transparent;
+}
+
+.data-table tr {
+	border-bottom: solid 1px #000;
+}
+
+.data-table td a:after {
+	content: "";
+}
+
+/*
+works in IE8+ and FF3.6+
+#divHeaderPane {
+	display: table-header-group;
+}
+
+#divMiddlePane {
+	display: table-row-group;
+}*/

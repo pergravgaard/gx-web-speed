@@ -1,0 +1,58 @@
+/*#frmPostings {*/
+	/*margin-bottom: 30px;*/
+/*}*/
+fieldset {
+	padding-top: 15px;
+}
+div.field-container {
+	display: block;
+	margin-bottom: 2em;
+}
+div.field-column {
+	float: left;
+}
+.decorator {
+	float: left;
+	clear: both;
+}
+.action-block {
+	float: right;
+	margin: 0 15px 0 0;
+	padding: 0;
+	width: 100px;
+}
+.action-link:link, .action-link:visited, .action-link:hover, .action-link:active {
+	margin-right: 0;
+}
+.content .button.filter:first-of-type {
+	padding: 20px;
+	margin: 0;
+}
+.label {
+	width: 7em;
+}
+.label.label-query {
+	/*width: 4em;*/
+	display: none;
+}
+.input-wrapper {
+	margin-left: 8em;
+	padding-right: 25px;
+}
+#decor-query .input-wrapper {
+	margin-left: 0;
+}
+#query {
+	width: 21em;
+	background: #fff url(../images/search.png) no-repeat 4px 6px;
+	padding-left: 2em;
+}
+.text.date {
+	width: 8em;
+}
+.select {
+	width: 10em;
+}
+.select.max {
+	width: 6em;
+}

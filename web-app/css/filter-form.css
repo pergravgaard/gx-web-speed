@@ -1,0 +1,34 @@
+.form-inline .action-block {
+    float: right;
+    margin: 0;
+}
+
+.form-inline .decorator {
+    /*display: inline-block;*/
+    /*float: left;*/
+    /*clear: none;*/
+    display: inline-flex;
+    margin: .5em;
+}
+
+.form-inline .label {
+    width: auto;
+    float: none;
+}
+
+.form-inline .input-wrapper {
+    margin-left: 1em;
+}
+
+.js .form-inline .button {
+    /*display: none;*/
+}
+
+@media (min-width: 64em) {
+    .js .form-inline .button {
+        /*display: block;*/
+    }
+    .form-inline .button[type="submit"]:first-of-type {
+        padding: 2em;
+    }
+}

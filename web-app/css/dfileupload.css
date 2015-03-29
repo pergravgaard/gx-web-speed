@@ -1,0 +1,101 @@
+input.file-upload {
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer;
+	position: absolute;
+	top: -2px;
+	font-size: 1.5em; /* make the element higher */
+	right: 0;
+	outline: none; /* prevents IE from rendering a dotted line onfocus */
+}
+
+.file-button {
+	display: block;
+	border: #aaa solid 1px;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	padding: 3px 8px;
+	cursor: pointer;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr=#ffffff, endColorstr=#cccccc);
+	background-image: -moz-linear-gradient(top center, #ffffff, #cccccc);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+}
+
+.file-button.file-focus {
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr=#ffffff, endColorstr=#aaaaaa);
+	background-image: -moz-linear-gradient(top center, #ffffff, #aaaaaa);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#aaa));
+}
+
+div.filename {
+	display: inline;
+	min-width: 200px;
+	padding: 4px 6px;
+	margin: 0;
+	line-height: 2;
+    vertical-align: bottom;
+}
+
+.thumbnail-container {
+    margin-top: 1em;
+}
+
+img.thumbnail {
+	border: none;
+}
+
+/*div.thumbnail-wrapper:hover:after {*/
+	/*content: attr(title);*/
+	/*padding: 4px 8px;*/
+	/*color: #333;*/
+	/*position: absolute;*/
+	/*left: 0;*/
+	/*top: 100%;*/
+	/*white-space: nowrap;*/
+	/*z-index: 20;*/
+	/*-moz-border-radius: 5px;*/
+	/*-webkit-border-radius: 5px;*/
+	/*border-radius: 5px;*/
+	/*-moz-box-shadow: 0 0 4px #222;*/
+	/*-webkit-box-shadow: 0 0 4px #222;*/
+	/*box-shadow: 0 0 4px #222;*/
+	/*background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);*/
+	/*background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee), color-stop(1, #cccccc));*/
+	/*background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);*/
+	/*background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);*/
+	/*background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);*/
+	/*background-image: -o-linear-gradient(top, #eeeeee, #cccccc);*/
+/*}*/
+
+/*div.file-wrapper {*/
+	/*clear: left;*/
+/*}*/
+
+div.thumbnail-wrapper:after {
+	content: '';
+	border-style: solid;
+    border-color: #fff;
+	position: absolute;
+	opacity: .4;
+    top: 0;
+	left: 0;
+}
+
+/*#divBodyContainer:hover {*/
+    /*background-color: blue;*/
+/*}*/
+/*#divBodyContainer:active .label:active + .file-wrapper:after {*/
+    /*position: fixed;*/
+    /*content: 'Drop here\2026';*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*background-color: red;*/
+    /*opacity: .6;*/
+    /*z-index: 9999;*/
+/*}*/

@@ -1,0 +1,1 @@
+<title><g:layoutTitle default="Home" /> @ <g:message code="site.title" /></title>

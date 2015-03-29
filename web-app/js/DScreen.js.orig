@@ -1,0 +1,293 @@
+if (typeof dLib == "undefined") {
+	throw new Error('DScreen.js: You must load the file DLib.js!');
+};
+var dScreen = {
+	landscapeMediaQueryList: (function() {
+		return window.matchMedia ? window.matchMedia('(orientation:landscape)') : null;
+	})(),
+	gatherInfo: function() {
+		var landscape = dScreen.isLandscape();
+		var result = {
+			landscape: landscape,
+			// In iOS screen.width and screen.height will not change when orientation changes!!
+			width: dScreen.getScreenWidth(landscape),
+			height: dScreen.getScreenHeight(landscape),
+			orientation: this.detectOrientation(), // number
+			dpi: screen.deviceXDPI || NaN,
+			dppx: NaN,
+			dpr: window.devicePixelRatio || NaN, // dpr is the value we should and will use as the scale factor in the viewport meta tag
+			toString: function() {
+				var s = [];
+				for (var p in this) {
+					if (typeof this[p] === 'number' || typeof this[p] === 'boolean') {
+						s.push(p + ': ' + this[p])
+					}
+				}
+				return s.join(', ');
+			}
+		}
+		// matchMedia method
+		if (window.matchMedia) { // not supported by IE9
+			var supportedDPI = NaN;
+			var dpis = [72, 96, 120]; // supported by FF, Opera, IE10, but not webkit (Safari and Chrome) and IE9
+			for (var i = 0, l = dpis.length; i < l; i++) {
+				var dpi = dpis[i];
+				if (window.matchMedia('(min-resolution: ' + dpi + 'dpi)').matches) {
+					supportedDPI = dpi;
+				}
+			}
+			if (!isNaN(supportedDPI)) {
+				result['dpi'] = supportedDPI;
+			}
+			var dppxs = [1, 1.5, 2];
+			var supportedDPPX = NaN;
+			for (var i = 0, l = dppxs.length; i < l; i++) {
+				var dppx = dppxs[i];
+				if (window.matchMedia('(min-resolution: ' + dppx + 'dppx)').matches) {
+					supportedDPPX = dppx;
+				}
+			}
+			if (!isNaN(supportedDPPX)) {
+				result['dppx'] = supportedDPPX;
+			}
+			if (isNaN(result['dpr'])) {
+				var dprs = [1, 1.5, 2];
+				var supportedDPR = NaN;
+				for (var i = 0, l = dprs.length; i < l; i++) {
+					var dpr = dprs[i];
+					if (window.matchMedia('(-webkit-min-device-pixel-ratio: ' + dpr + ')').matches) {
+						supportedDPR = dpr;
+					}
+				}
+				if (!isNaN(supportedDPR)) { // Webkit goes here
+					result['dpr'] = supportedDPR;
+				}
+			}
+		}
+		return result;
+	},
+	zoom: function(dimension, targetWidth, targetHeight) {
+		var w = dimension[0], h = dimension[1];
+		if (w > 0 && h > 0) {
+			// sanitize arguments - it's assumed that if a target argument is specified, it is a positive finite integer
+			targetWidth = targetWidth || w;
+			targetHeight = targetHeight || h;
+			var newWidth, newHeight;
+			var scaleX = targetWidth / w;
+			var scaleY = targetHeight / h;
+			var ratio = h / w; // must preserve original ratio
+			if (scaleX >= scaleY) {
+				newHeight = targetHeight;
+				newWidth = newHeight / ratio;
+			} else {
+				newWidth = targetWidth;
+				newHeight = ratio * newWidth;
+			}
+			return [newWidth, newHeight];
+		}
+		return dimension;
+	},
+	/*
+	 * Most mobile browsers support window.orientation (except Opera Mobile), but on some Android tablets (Samsung Galaxy) the values for orientation are switched
+	 * so that 0 and 180 means landscape (we assume that landscape means that device screen width is larger than device screen height). On other devices such as Ipad and Ipod 0 and 180 means portrait
+	 * and 90 and -90 means landscape.
+	 * */
+	detectOrientation: function() {
+		return parseInt(window.orientation, 10);
+	},
+	isLandscape: function() {
+		if (this.landscapeMediaQueryList) {
+			// this may return the wrong result in native Android browser, when called on orientationchange (is the case on Android 4.1.2)
+			// it also returns the wrong result for Firefox on Samsung S4 (Android 4.2.2) when parsing document
+			return this.landscapeMediaQueryList.matches;
+		}
+		var orientation = this.detectOrientation();
+		if (Math.abs(orientation) == 90) {
+			return true; // Note that this will most likely not be correct on Samsung Tablets. See explanation for detectOrientation method.
+		}
+		return screen.width >= screen.height; // TODO: Does not work in native browser on Android 2.3.4. On first load it's correct, but on second (reading from cache) it is not. Screen.height has been modified.
+	},
+	// Safari and Chrome does not alter width and height when changing orientation, but Firefox, Opera, Dolphin and Native Android browser does
+	getScreenWidth: function(landscape) {
+		if (typeof landscape != 'boolean') {
+			landscape = this.info.landscape;
+		}
+		return landscape ? Math.max(screen.height, screen.width) : Math.min(screen.height, screen.width);
+	},
+	getScreenHeight: function(landscape) {
+		if (typeof landscape != 'boolean') {
+			landscape = this.info.landscape;
+		}
+		return landscape ? Math.min(screen.height, screen.width) : Math.max(screen.height, screen.width);
+	},
+	// See https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag:
+	/*
+	 * The default ratio depends on the display density.
+	 * On a display with density less than 200dpi, the ratio is 1.0.
+	 * On displays with density between 200 and 300dpi, the ratio is 1.5.
+	 * For displays with density over 300dpi, the ratio is the integer floor(density/150dpi).
+	 * Note that the default ratio is true only when the viewport scale equals 1. Otherwise, the relationship between CSS pixels and device pixels depends on the current zoom level.
+	 * */
+	detectScale: function() {
+		var result = this.info;
+		var scale = result['dpr'] || result['dppx'] || NaN;
+		if (isNaN(scale)) {
+			var dpi = result['dpi'];
+			if (!isNaN(dpi)) {
+				if (dpi < 200) {
+					scale = 1;
+				}
+				else if (dpi >= 200 && dpi <= 300) {
+					scale = 1.5;
+				} else {
+					scale = Math.floor(dpi / 150);
+				}
+			}
+		}
+		if (isNaN(scale)) {
+			scale = this.customDetectScale(result) || scale;
+		}
+		return scale;
+	},
+	customDetectScale: function(result) {
+		// calculate the scale in any other way you like, fx by using navigator.userAgent. Remember to return your calculated scale as a number!!
+	},
+	getViewportMetaTag: function() {
+		return document.querySelector('meta[name="viewport"]');
+	},
+	setViewport: function(hardScale, value, setMaxScale) {
+		var scale = parseFloat(hardScale) || this.detectScale();
+		if (isNaN(scale)) {
+			return; // do nothing
+		}
+		var vpm = this.getViewportMetaTag();
+		var v = value || '', sep = v ? ', ' : '';
+		v += sep + 'initial-scale=' + scale;
+		if (!!setMaxScale) {
+			v += ', minimum-scale=' + scale + ', maximum-scale=' + scale;
+		}
+		if (vpm) {
+			vpm.setAttribute('content', v);
+		} else {
+			var elems = q('head, meta').asArray();
+			var viewportMeta = DElement.create('meta', {
+				name: 'viewport',
+				content: v
+			});
+			DNode.insertAfter(viewportMeta, elems[elems.length - 1]);
+			//DElement.append(head, '<meta name="viewport" content="' + v + '" />');
+		}
+	},
+	scalePage: function(resolution) {
+		var cw = this.getScreenWidth(), ch = this.getScreenHeight();
+		this.resolveViewport(resolution, cw, ch);
+	},
+	resolveScaleX: function(desiredWidth) {
+		var screenWidth = this.getScreenWidth();
+		if (screenWidth) { // cannot divide by 0 or NaN
+			return screenWidth / desiredWidth;
+		}
+		return NaN;
+	},
+	resolveScaleY: function(desiredHeight) {
+		var screenHeight = this.getScreenHeight();
+		if (screenHeight) { // cannot divide by 0 or NaN
+			return screenHeight / desiredHeight;
+		}
+		return NaN;
+	},
+    resolveBestResolution: function(resolutions, bestResolution, bestScale) {
+        var scales = resolutions.map(function(res, i) {
+            return [dScreen.resolveScaleX(res[0]) || 1, dScreen.resolveScaleY(res[1]) || 1]; // avoid NaN values
+        });
+        var bestIndex = -1, delta = Number.MAX_VALUE;
+        scales.forEach(function(scale, i) {
+            var deviation = Math.sqrt(Math.pow(1 - scale[0], 2) + Math.pow(1 - scale[1], 2));
+            if (deviation < delta) {
+                bestIndex = i;
+                delta = deviation;
+            }
+        });
+        var result = {
+            bestResolution: bestIndex > -1 ? resolutions[bestIndex] : [NaN, NaN],
+            bestScale: bestIndex > -1 ? scales[bestIndex] : [NaN, NaN]
+        };
+        if (Object.isObject(bestResolution)) {
+            bestResolution.width = result.bestResolution[0];
+            bestResolution.height = result.bestResolution[1];
+        }
+        if (Object.isObject(bestScale)) {
+            bestScale.x = result.bestScale[0];
+            bestScale.y = result.bestScale[1];
+        }
+        return result;
+    },
+	// Safari on iPad values:
+	// content = 'width=' + desiredWidth;
+	// addMinMax = true; // necessary
+	// user-scalable=no is not needed when min and max are equal
+	// orientationchange listener is needed and supported
+
+	// Chrome on Android 4 values:
+	// content = 'width=' + desiredWidth;
+	// addMinMax = true; // necessary
+	// user-scalable=no is not needed when min and max are equal
+	// orientationchange listener not needed, though supported
+
+	// Native browser on Android 4 values:
+	// content = 'width=' + desiredWidth;
+	// addMinMax = true; // necessary
+	// user-scalable=no is needed even when min and max are equal, but user-scalable=no makes it ignore initial-scale!!!
+	// orientationchange listener is needed and supported
+
+	// Firefox browser on Android 4 values:
+	// content = 'width=' + desiredWidth;
+	// addMinMax = false; // not necessary
+	// user-scalable=no is needed even when min and max are equal
+	// orientationchange listener is needed, but not supported
+
+	// Opera browser on Android 4 values:
+	// content = 'width=' + desiredWidth;
+	// addMinMax = true; // necessary
+	// user-scalable=no is not needed when min and max are equal
+	// orientationchange listener is needed, but not supported
+    resolveViewport: function(dimension, targetWidth, targetHeight) {
+        var scale = 1;
+        var content = '';
+        var addMinMax = true;
+        var res = dScreen.zoom(dimension, targetWidth, targetHeight); // either res[0] and dimension[0] will be equal or res[1] and dimension[1] will
+        if (res[0] == targetWidth) {
+			scale = res[0] / dimension[0];
+            content += 'width=' + targetWidth;
+        } else {
+            scale = res[1] / dimension[1];
+            content += 'height=' + targetHeight;
+        }
+        if (this.isFirefox) {
+            content += ', user-scalable=no';
+            addMinMax = false;
+        }
+        if (scale) {
+            this.setViewport(scale, content, addMinMax);
+        }
+    },
+	onOrientationChange: function() {
+		// override for custom behavior
+	}
+};
+(function() {
+	dScreen.info = dScreen.gatherInfo();
+	// Native browser on Android 4.0.4 supports window.matchMedia and has the addListener method, but the listener is never triggered. So that's why we check for support for orientationchange first
+	if ('onorientationchange' in window) {
+		addEvent('orientationchange', function(e) { // not supported by Firefox
+			dScreen.info.landscape = !dScreen.info.landscape; // TODO: Is wrong if tilted 180 degrees
+			dScreen.onOrientationChange();
+		});
+	}
+	else if (dScreen.landscapeMediaQueryList && dScreen.landscapeMediaQueryList.addListener) {
+		dScreen.landscapeMediaQueryList.addListener(function(m) {
+			dScreen.info.landscape = m.matches;
+			dScreen.onOrientationChange();
+		});
+	}
+})();

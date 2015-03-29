@@ -1,0 +1,1 @@
+<div class="powered-by"><g:message code="footer.poweredBy" /> <a href="http://grailshouse.dk" class="powered-by-link">GrailsHouse</a></div>

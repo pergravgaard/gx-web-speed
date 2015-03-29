@@ -1,0 +1,105 @@
+/* basic layout */
+body, div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+	background-color: #F4F4F2;
+}
+
+#divBodyContainer {
+	position: relative;
+	left: 0;
+	top: 0;
+	padding-top: 162px;
+}
+
+#divMiddlePane {
+	/*background: url(../images/karma/bg-content.jpg) repeat-x scroll 50% 0;*/
+}
+
+#divHeaderPane {
+	position: absolute;
+	/*background: #19292E url(../images/karma/black/bg-header.jpg) 0 28px repeat-x;*/
+	color: #fff;
+	left: 0;
+	top: 0;
+	min-width: 980px;
+	width: 100%;
+}
+
+#divToolbarPane {
+	width: 980px;
+	margin: 0 auto;
+	position: relative;
+	height: 28px;
+}
+
+.rays {
+	background: url(../images/karma/rays.png) no-repeat scroll 50% 0 transparent;
+	height: 134px;
+	overflow: hidden;
+}
+
+#header {
+	width: 980px;
+	height: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	/*padding: 20px 0;*/
+}
+
+/*#divFooterPane2 {*/
+	/*background: #000 url(../images/karma/blue-grey/bg-footer.jpg) repeat-x;*/
+	/*clear: both;*/
+	/*width: 100%;*/
+	/*height: 89px;*/
+/*}*/
+
+#divFooterPane {
+	/*background: #000 url(../images/karma/blue-grey/bg-footer.jpg) repeat-x;*/
+	border-top: solid #19292e 1px;
+	clear: both;
+	width: 100%;
+	/*height: 410px;*/
+	/*position: relative;*/
+}
+
+#footer {
+	/*position: absolute;*/
+	border-top: solid #fff 1px;
+	background: url(../images/karma/black/bg-footer-bottom.jpg) repeat-x;
+	width: 100%;
+	height: 89px;
+	/*bottom: 0;*/
+}
+
+#divLeftPane {
+	/*display: none;*/
+}
+
+#divRightPane {
+	/*display: none;*/
+}
+
+#divContentPane {
+	width: 980px;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+
+.powered-by {
+	font-size: .8em;
+	color: #999;
+	position: absolute;
+	padding: 5px;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	margin: auto;
+}
+
+.powered-by-link:link, .powered-by-link:visited, .powered-by-link:hover, .powered-by-link:active {
+	color: #999;
+}

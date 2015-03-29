@@ -1,0 +1,157 @@
+/* basic layout */
+body, div {
+    margin: 0;
+    padding: 0;
+}
+
+#divBodyContainer {
+	position: relative;
+	left: 0;
+	top: 0;
+	/*background-color: #ccc;*/
+	/*max-width: 344px;*/
+	padding-top: 111px;
+}
+
+#divMiddlePane {
+	position: relative;
+	height: 100%;
+}
+
+#divHeaderPane {
+	position: absolute;
+	z-index: 100;
+	color: #fff;
+	left: 0;
+	top: 0;
+	/*background-color: red;*/
+	width: 100%;
+    height: 111px;
+}
+
+#divToolbarPane {
+	/*width: 900px;*/
+	margin: 0 auto;
+	right: 10px;
+	position: absolute;
+	height: 28px;
+}
+
+#header {
+	/*width: 900px;*/
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	border-bottom: 1px dotted #ddd;
+}
+
+#divFooterPane {
+	clear: both;
+	width: 98%;
+	margin: 0 1%;
+	/*background-color: red;*/
+}
+
+#footer, #preFooter {
+	border-top: 1px dotted #ddd;
+	/*width: 900px;*/
+	margin: 0 auto;
+	padding: 20px;
+}
+
+#footer {
+	text-align: center;
+}
+
+#divLeftPane {
+	/*display: none;*/
+}
+
+#divRightPane {
+	/*display: none;*/
+}
+
+#divContentPane {
+	/*width: 900px;*/
+	margin: 0 auto;
+	padding: 20px 40px;
+}
+
+.powered-by {
+	font-size: .8em;
+	color: #fff;
+	position: absolute;
+	padding: 5px;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	margin: auto;
+}
+
+.powered-by-link:link, .powered-by-link:visited, .powered-by-link:hover, .powered-by-link:active {
+	color: #fff;
+}
+
+#divCopyright {
+	font-size: 11px;
+}
+
+/*@media screen and (max-width: 800px) {*/
+	/*#header, #footer, #divToolbarPane, #divContentPane {*/
+		/*width: 700px;*/
+	/*}*/
+/*}*/
+
+#progress {
+	display: none;
+	position: fixed;
+	right: 5px;
+	top: 5px;
+	width: 32px;
+	height: 32px;
+	background: url(../images/loading2.gif) no-repeat center center;
+	z-index: 10000;
+}
+
+#progress.modal {
+	right: auto;
+	left: 50%;
+	top: 50%;
+	margin-left: -16px;
+	margin-top: -16px;
+}
+
+#messages {
+	display: none;
+	position: fixed;
+	opacity: .7;
+	border-radius: 5px;
+	border: 1px solid #999;
+	background-color: #fff;
+	left: 50%;
+	top: 55%;
+	margin-left: -16%;
+	padding: 1%;
+	width: 30%;
+	text-align: center;
+	z-index: 10001;
+}
+
+#modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	display: none;
+	z-index: 9999;
+	opacity: .7;
+}
+
+#noscript {
+	padding: 1em;
+	text-align: center;
+	font-size: 2em;
+	color: red;
+}

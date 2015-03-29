@@ -1,0 +1,1 @@
+<g:pageProperty name="page.bodyScript" />

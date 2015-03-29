@@ -1,0 +1,73 @@
+.dtree {
+	margin-top: 10px;
+	padding: 5px 0;
+}
+.collapsed {
+	display: none;
+}
+.root > dd.dtree-node {
+	margin-left: 0;
+}
+dd.dtree-node {
+	display: list-item;
+	line-height: normal;
+	margin: 0 0 0 15px;
+	padding: 0;
+	list-style-type: none;
+	border: transparent solid 1px;
+	/*-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;*/
+}
+dl.branch {
+	margin: 1px 0 0 0;
+}
+div.dtree-icon {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	margin: 0 1px -3px 0;
+}
+
+div.dtree-icon.expanded, div.dtree-icon.collapsed {
+	background: url(images/icons_sprite.png) no-repeat -16px -96px;
+	cursor: pointer;
+}
+div.dtree-icon.collapsed {
+	background-position: 0 -96px;
+}
+div.dtree-icon.leaf {
+	background: url(images/icons_sprite.png) no-repeat -240px -128px;
+}
+div.dtree-icon.processing {
+	background: url(images/icons_sprite.png) no-repeat -64px -80px;
+}
+
+/* \0/ targets IE8+9 only */
+input.dtree-checkbox {
+	float: left;
+	position: relative;
+	margin: 0;
+	margin-top: -1px;
+	margin-right: 4px;
+	margin-left: -2px\0/;
+	top: 1px;
+	border: solid 1px #ccc;
+	border-style: none\0/;
+}
+
+.dtree-node-label {
+	display: inline-block;
+	color: #666;
+	padding: 1px 3px;
+	font-size: 11.4px;
+}
+.dtree-node-label.selected {
+	background-color: #ccc;
+}
+a.dtree-link {
+	text-decoration: none;
+}
+span.dtree-hit {
+	background-color: #dc8323;
+}

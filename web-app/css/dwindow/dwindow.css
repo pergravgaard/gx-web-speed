@@ -1,0 +1,95 @@
+/*	Note that Internet Explorer should be in strict mode for these CSS properties to work properly.
+	If in quirks mode Internet Explorer does not support the W3C Box Model.
+	Internet Explorer is in strict mode if the page has a DOCTYPE tag WITH a reference to
+	a DTD file. It doesn't matter if this reference is to loose.dtd or strict.dtd or some other DTD.
+	But there must be a reference in order to be in strict mode.
+	Note that border widths are included in the offset properties (goes for all browsers)!
+	They are also included in the height and width properties in IE when not in strict mode!
+*/
+
+.DWindow {
+	*width: expression(document.getElementById(this.id + "Content").offsetWidth + "px");
+	position: absolute; /*	position is automatically set to absolute (or fixed if modal) */
+	padding: 0; /* should be 0 for minimize and maximize to work properly */
+	margin: 0;
+	left: 0;
+	top: 0;
+	display: none;
+	box-shadow: 4px 4px 4px #999;
+	-moz-box-shadow: 4px 4px 4px #999;
+	-webkit-box-shadow: 4px 4px 4px #999;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid #99bbe8;
+}
+
+.DWindowHeader {
+	background-color: #99bbe8;
+	height: 18px;
+	margin: 0;
+	padding: 0 9px;
+	color: #fff;
+}
+
+.DWindowContent {
+	/* IE6+7 needs a width and a height.
+	If an iframe is contained inside the content container, webkit needs a width and a height too.
+	Depending on the content (HTML and CSS) in the iframe a width and a height may be needed in every browser! */
+	*height: 300px;
+	*width: 400px;
+	padding: 20px;
+	margin: 0;
+	overflow: auto;
+	background-color: #fff;
+}
+
+.DWindowFooter {
+	background-color: #99bbe8;
+	height: 14px;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+
+.DWindowClose, .DWindowMaximize, .DWindowMinimize {
+	position: relative;
+	float: right;
+	width: 16px;
+	height: 16px;
+	cursor: pointer; /* the cursor must be set in IE, otherwise the move cursor from the header bar is used. */
+}
+
+.DWindowClose {
+	background: #99bbe8 url(images/tool-sprites.gif) 1px 1px no-repeat;
+}
+
+.DWindowMaximize {
+	background: #99bbe8 url(images/tool-sprites.gif) 1px -29px no-repeat;
+}
+
+.DWindowMinimize {
+	background: #99bbe8 url(images/tool-sprites.gif) 1px -14px no-repeat;
+}
+
+.DWindowResize {
+	position: relative;
+	right: 0;
+	float: right;
+	margin: -14px 0 0 0;
+	padding: 0;
+	width: 13px;
+	height: 14px;
+	cursor: pointer; /* the cursor must be set in IE, otherwise the move cursor from the header bar is used. */
+	background: #99bbe8 url(images/resize.png) 0 0 no-repeat;
+}
+
+.DWindow.Dragging, .DWindowContent.Resizing {
+	background-color: #fff;
+	opacity: .8;
+	filter: alpha(opacity=80);
+}
+
+.DWindow.Dragging .DWindowContent, .DWindowContent.Resizing * {
+	visibility: hidden;
+}

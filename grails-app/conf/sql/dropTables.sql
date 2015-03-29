@@ -1,0 +1,1 @@
+drop table if exists abstract_domain_class;

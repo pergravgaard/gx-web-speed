@@ -1,0 +1,4 @@
+#Grails Metadata file
+#Tue Jun 10 21:40:36 CEST 2014
+app.grails.version=2.4.0
+app.name=gx-web-speed
